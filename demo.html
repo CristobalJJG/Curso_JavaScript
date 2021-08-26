@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de JavaScript</title>
+    <link rel="stylesheet" href="../Archivos CSS principal/CSS.css">
+    <link rel="stylesheet" href="../Archivos CSS principal/scroll-lateral.css">
+</head>
+<body>
+    <h1>JavaScript</h1>
+    <h2>Escribir un array en un documento HTML</h2>
+    <script language="javascript" type="text/javascript">
+        var arr = [0, 85, 105, 60, 20, 25]
+
+        for(i=0; i<5; i++){
+            document.write(arr[i] + " - ");
+        }
+    </script>
+    <br/><br/><br/>
+    <h2>Ordenar un Array</h2>
+    <script lang="javascript">
+        arr2 = arr.sort(function cn(a,b){return a-b});
+        var str = "";
+        for(i=0; i<5; i++){
+            str += arr[i] + " - "
+        }
+        document.write(str.substring(0, str.length-3));
+    </script>
+    <br/><br/><br/>
+    <h2>Variables</h2>
+    <script lang="javascript">
+        var name = "Cristóbal";
+        var age = 21;
+        var salary = 80.25
+
+        document.write( "Nombre: " + name + 
+                        "<br/> Edad: " + age + 
+                        "<br/> Salario: " + salary)
+    </script>
+
+    <br/><br/><br/>
+
+    <h2>Condicionales</h2>
+    <p>Existen los <em>if/else</em> al igual que el <em>switch</em>.</p>
+    
+    <br/><br/><br/>
+    
+    <h2>Funciones</h2>
+    <script lang="javascript">
+        function sayHello1(){
+            document.write("Hello!");
+        } 
+    </script>
+    <p>Haz clic en el botón.</p>
+    <form> <input type="button" onclick="sayHello1()" value="Say Hello"/></form>
+
+    <script lang="javascript">
+        function sayHello2(name, age){
+            if(name == "" || age == "") return;
+            document.write(name + " tiene " + age + " años.");
+        }
+    </script>
+    <p>Haz clic en el botón.</p>
+    <form>
+        <input type="text" name="nombre" placeholder="Enter Name..."/><br/>
+        <input type="text" name="edad" placeholder="Enter Age..."/><br/> 
+        <input type="button" onclick="sayHello2(nombre.value, edad.value)" value="Enter"/><br/>
+    </form>
+
+    <br/><br/><br/>
+
+    <h2>Objetos</h2>
+    <script lang="javascript">
+        var persona = {
+            "nombre": "Cristóbal",
+            "apellido": "Jiménez",
+            "edad": "21",
+        }
+        document.write(persona.nombre + " " + persona.apellido + " tiene " + persona.edad + " años.")
+        
+        var txt = ""; var x;
+        for(x in persona){
+            txt += persona[x] + ", ";
+        }  
+        document.write(txt.substring(0,-2))
+    </script>
+
+    <br/><br/><br/>
+
+    <h2>For loop</h2>
+    <p>Factorial de un número...</p>
+    <script lang="javascript">
+        function fact(){
+            var res = 1;
+            var num = parseInt(prompt("Inserta un número para obtener su factorial", "Insertar..."));
+            for(var i = 2; i <= num; i++){
+                res = res * i;
+            }
+            document.write("!" + num + ": " + res);
+        }
+    </script>
+    <input type="button" onclick="fact()" value="Try"/><br/>
+
+
+    <br/><br/><br/>
+
+    <h2>For loop</h2>
+    <script lang="javascript">
+        //Funcion principal para calcular la media de 4 notas pedidas por pantalla
+        function media(){
+            var n1 = 3.5; var n2 = 3.5; var n3 = 3.5; var n4 = 3.5
+            n1 = parseFloat(prompt("Inserta la primera nota:", "3.5"));
+            n2 = parseFloat(prompt("Inserta la segunda nota:", "3.5"));
+            n3 = parseFloat(prompt("Inserta la tercera nota:", "3.5"));
+            n4 = parseFloat(prompt("Inserta la última nota:", "3.5"));
+            if((n1||n2||n3||n4) == ""){return;}
+            var n = [n1, n2, n3, n4]
+            var res = 0;
+            for(var i = 0; i<4; i++){res += n[i];}
+            document.write("La nota media es: " + res/4, ": " + pass(res/4));
+        }
+
+        //Función auxiliar para determinar qué media ha sacado
+        function pass(n){
+            var res = "<strong>";
+            if(n < 4.99){res += "Suspenso.";}
+            else if(n <= 5.5){res += "Justito.";}
+            else if(n < 7){res += "Aprobado.";}
+            else if(n < 9){res += "Notable.";}
+            else if(n <= 10){res += "Sobresaliente.";}
+            else{return NaN}
+            return res + "<strong>";
+        }
+    </script>
+
+    <form>
+        <fieldset><legend>Media:</legend>  
+            <input type="button" onclick="setTimeout('media()', 1000)" value="Enter"/><br/>
+        </fieldset>
+    </form>
+
+
+
+</body>
+</html>
